@@ -3,6 +3,7 @@ setuptools_rust
 cryptography==3.4.8
 httplib2
 requests
+myfitnesspal
 requests-oauthlib
 selenium
 selenium-wire
