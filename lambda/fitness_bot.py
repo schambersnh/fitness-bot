@@ -8,12 +8,11 @@ from datetime import date
 def get_day_totals(year, month, day):
 	nutrition_data = None
 	try:
-		nutrition_data = get_nutrition_data_from_mfp(year, month, day)
-		return nutrition_data
+		return get_nutrition_data_from_mfp(year, month, day)
 	except Exception as e:
 		print('could not log into myfitness pal:')
 		print(e)
-		nutrition_data = get_totals_from_spreadsheet()
+		return get_totals_from_spreadsheet()
 
 
 def get_nutrition_data_from_mfp(year, month, day):
