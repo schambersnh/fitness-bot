@@ -28,6 +28,8 @@ class SpreadsheetNutritionClient():
         nutrition_data['totals']['fat'] = float(values[1][2])
         nutrition_data['totals']['protein'] = float(values[1][3])
 
+        nutrition_data['retrieval'] = 'spreadsheet'
+
         print('retrieved nutrition_data from spreadsheet')
         print(nutrition_data)
 
