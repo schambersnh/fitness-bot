@@ -1,5 +1,6 @@
 from webdriver_auth import SeleniumAuth
 import myfitnesspal
+import os
 
 auth = SeleniumAuth(
     username='stephenchambers515@gmail.com',
