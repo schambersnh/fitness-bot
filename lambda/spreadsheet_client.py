@@ -24,7 +24,7 @@ class SpreadsheetNutritionClient():
         values = result.get('values', [])
 
         nutrition_data['totals']['calories'] = float(values[1][0])
-        nutrition_data['totals']['carbs'] = float(values[1][1])
+        nutrition_data['totals']['carbohydrates'] = float(values[1][1])
         nutrition_data['totals']['fat'] = float(values[1][2])
         nutrition_data['totals']['protein'] = float(values[1][3])
 
