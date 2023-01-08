@@ -112,9 +112,13 @@ class SeleniumAuth:
         options.add_argument("--kiosk")
 
         driver = webdriver.Chrome(
+            self.__webdriver_path,
+            options=options)
+
+        '''driver = webdriver.Chrome(
             service=ChromeService(ChromeDriverManager().install())  ,
             options=options
-        )
+        )'''
 
         driver.set_window_size(1920, 1080)
         driver.maximize_window()

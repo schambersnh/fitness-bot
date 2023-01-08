@@ -3,7 +3,8 @@ import myfitnesspal
 
 auth = SeleniumAuth(
     username='stephenchambers515@gmail.com',
-    password='515aug06SC*',
+    password=os.environ["MFP_PASSWORD"],
+    webdriver_path=r'/usr/bin/chromedriver',
     creds_filepath='creds.json',
     use_stored_credentials=False)
 
