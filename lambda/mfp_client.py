@@ -27,7 +27,7 @@ class MFPClient():
 
     def get_mfp_data_by_day(self, year, month, day):
         nutrition_data = {}
-        mfpCurrentDayData = self.mfp.get_date(2023,1,7)
+        mfpCurrentDayData = self.mfp.get_date(year, month, day)
         
         nutrition_data['entries'] = mfpCurrentDayData.entries
         nutrition_data['water'] = mfpCurrentDayData.water
