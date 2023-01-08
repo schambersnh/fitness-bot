@@ -90,11 +90,13 @@ class SeleniumAuth:
         self,
         username: str,
         password: str,
+        webdriver_path: str,
         creds_filepath: str = None,
         use_stored_credentials: bool = True
     ):
         self.__username = username
         self.__password = password
+        self.__webdriver_path = webdriver_path
         self.__creds_filepath = creds_filepath
         self.__use_stored_credentials = use_stored_credentials
 
