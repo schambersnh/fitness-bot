@@ -24,7 +24,7 @@ export class MfpNodeStack extends cdk.Stack {
 
 
     const fitnessBotLayer = new lambda.LayerVersion(this, 'FitnessBotLayer', {
-        compatibleRuntimes: [ lambda.Runtime.PYTHON_3_8 ],
+        compatibleRuntimes: [ lambda.Runtime.PYTHON_3_6 ],
         code: lambda.Code.fromAsset('./fitness-bot-layer')
     })
 
@@ -41,7 +41,7 @@ export class MfpNodeStack extends cdk.Stack {
       functionName: "fitnessBot",
       handler: 'fitness_bot.lambda_handler',
       memorySize: 1024,
-      runtime: lambda.Runtime.PYTHON_3_8,
+      runtime: lambda.Runtime.PYTHON_3_6,
       timeout: cdk.Duration.seconds(300),
       layers: [fitnessBotLayer],
       environment: environmentVariables
