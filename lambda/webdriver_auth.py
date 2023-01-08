@@ -67,7 +67,7 @@ class SeleniumAuth:
     @property
     def cookies(
         self
-    ) -> list[dict]:
+    ):
         '''
         The raw cookie data returned from the
         webdriver requests or stored credentials
