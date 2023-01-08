@@ -271,7 +271,7 @@ class SeleniumAuth:
 
     def __get_distinct_request_urls(
         self
-    ) -> list[str]:
+    ):
         '''
         Get a list of all distinct request URLs from
         the webdriver
