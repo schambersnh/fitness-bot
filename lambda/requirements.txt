@@ -1,0 +1,10 @@
+cachetools
+rust
+cryptography==3.4.8
+httplib2
+requests
+requests-oauthlib
+selenium
+selenium-wire
+twilio
+webdriver-manager

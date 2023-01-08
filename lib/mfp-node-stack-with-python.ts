@@ -1,10 +1,11 @@
-import { Stack, StackProps, aws_lambda as lambda } from 'aws-cdk-lib';
+import { Stack, StackProps } from 'aws-cdk-lib';
 
 import * as cdk from 'aws-cdk-lib';
 import * as sm from "aws-cdk-lib/aws-secretsmanager";
 import * as kms from 'aws-cdk-lib/aws-kms';
-import * as path from 'path';
 
+import { PythonFunction } from '@aws-cdk/aws-lambda-python-alpha';
+import { Runtime } from 'aws-cdk-lib/aws-lambda';
 
 
 export class MfpNodeStack extends cdk.Stack {
@@ -30,18 +31,12 @@ export class MfpNodeStack extends cdk.Stack {
       'MFP_PASSWORD': myFitnessPalPassword
     }
 
-    new lambda.Function(this, 'FitnessBotFunction', {
-      code: lambda.Code.fromAsset('./lambda', {
-      bundling: {
-      image: lambda.Runtime.PYTHON_3_6.bundlingImage,
-      command: [
-        'bash', '-c',
-        'pip install -r requirements.txt -t /asset-output && cp -au . /asset-output'
-      ],
-        },
-        }),
-      runtime: lambda.Runtime.PYTHON_3_6,
-      handler: 'fitness_bot.lambda_handler',
+
+    new PythonFunction(this, 'FitnessBotLambda', {
+      runtime: Runtime.PYTHON_3_9,
+      entry: './lambda',
+      index: 'fitness_bot.py'
     });
+
   }
 }

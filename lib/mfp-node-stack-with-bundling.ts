@@ -33,15 +33,15 @@ export class MfpNodeStack extends cdk.Stack {
     new lambda.Function(this, 'FitnessBotFunction', {
       code: lambda.Code.fromAsset('./lambda', {
       bundling: {
-      image: lambda.Runtime.PYTHON_3_6.bundlingImage,
+      image: lambda.Runtime.PYTHON_3_9.bundlingImage,
       command: [
         'bash', '-c',
         'pip install -r requirements.txt -t /asset-output && cp -au . /asset-output'
       ],
         },
         }),
-      runtime: lambda.Runtime.PYTHON_3_6,
-      handler: 'fitness_bot.lambda_handler',
+      runtime: lambda.Runtime.PYTHON_3_9,
+      handler: 'fitness_bot.handler',
     });
   }
 }
