@@ -3,6 +3,7 @@ import { Stack, StackProps, aws_lambda as lambda } from 'aws-cdk-lib';
 import * as cdk from 'aws-cdk-lib';
 import * as sm from "aws-cdk-lib/aws-secretsmanager";
 import * as kms from 'aws-cdk-lib/aws-kms';
+import * as path from 'path';
 
 
 
@@ -23,29 +24,24 @@ export class MfpNodeStack extends cdk.Stack {
     const myFitnessPalPassword = fitnessBotSecret.secretValueFromJson('MFP_PASSWORD').unsafeUnwrap().toString()
 
 
-    const fitnessBotLayer = new lambda.LayerVersion(this, 'FitnessBotLayer', {
-        compatibleRuntimes: [ lambda.Runtime.PYTHON_3_9 ],
-        code: lambda.Code.fromAsset('./fitness-bot-layer')
-    })
-
-
     const environmentVariables = {
       'TWILIO_AUTH_TOKEN':  twilioAuthToken,
       'SPREADSHEET_API_KEY': spreadsheetApiKey,
       'MFP_PASSWORD': myFitnessPalPassword
     }
 
-
-    new lambda.Function(this, 'FitnessBotLambda', {
-      code: lambda.Code.fromAsset('./lambda'),
-      functionName: "fitnessBot",
-      handler: 'fitness_bot.lambda_handler',
-      memorySize: 1024,
-      runtime: lambda.Runtime.PYTHON_3_9,
-      timeout: cdk.Duration.seconds(300),
-      layers: [fitnessBotLayer],
-      environment: environmentVariables
+    new lambda.Function(this, 'FitnessBotFunction', {
+      code: lambda.Code.fromAsset('./lambda', {
+      bundling: {
+      image: lambda.Runtime.PYTHON_3_7.bundlingImage,
+      command: [
+        'bash', '-c',
+        'pip install -r requirements.txt -t /asset-output && cp -au . /asset-output'
+      ],
+        },
+        }),
+      runtime: lambda.Runtime.PYTHON_3_7,
+      handler: 'fitness_bot.handler',
     });
-
   }
 }

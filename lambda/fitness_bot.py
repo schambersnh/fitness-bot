@@ -37,7 +37,7 @@ def create_and_send_fitness_message():
 	message += fitnessMessageBuilder.serialize_nutrition_data(nutrition_data)
 
 	print(message)
-	#TwilioClient().send_message(message)
+	TwilioClient().send_message(message)
 
 
 def handler(event, context):
