@@ -13,7 +13,7 @@ class FitnessMessageBuilder():
 	def serialize_nutrition_data(self, nutrition_data):
 		nutritional_message = ""
 
-		if nutrition_data['retrieval'] == 'spreadsheet' and nutrition_data['message'] is not None:
+		if nutrition_data['retrieval'] == 'spreadsheet' and "message" in nutrition_data:
 			return nutrition_data['message']
 
 		calories = nutrition_data['totals']['calories']
