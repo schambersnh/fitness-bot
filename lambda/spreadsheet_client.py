@@ -17,6 +17,8 @@ service = discovery.build(
 class SpreadsheetNutritionClient():
 	def get_spreadsheet_nutrition_data(self):
 		nutrition_data = {}
+		nutrition_data['retrieval'] = 'spreadsheet'
+
 		nutrition_data['totals'] = {}
 		spreadsheetId = '1-XYteIgeAccDfDRnl4ZsOV-HUONsrbu_8LdNdB_V2qc'
 		rangeName = 'sheet1!A1:E2'
@@ -36,8 +38,6 @@ class SpreadsheetNutritionClient():
 		nutrition_data['totals']['carbohydrates'] = float(values[1][1])
 		nutrition_data['totals']['fat'] = float(values[1][2])
 		nutrition_data['totals']['protein'] = float(values[1][3])
-
-		nutrition_data['retrieval'] = 'spreadsheet'
 
 		print('retrieved nutrition_data from spreadsheet')
 		print(nutrition_data)
