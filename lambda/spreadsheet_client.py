@@ -1,5 +1,6 @@
 import httplib2
 import os
+from datetime import date
 
 from apiclient import discovery
 
@@ -23,8 +24,12 @@ class SpreadsheetNutritionClient():
             spreadsheetId=spreadsheetId, range=rangeName).execute()
         values = result.get('values', [])
 
-        date = values[1][4]
-        print(date)
+        spreadsheet_day = str(values[1][4])
+        current_day = str()date.today().day)
+
+        if spreadsheet_day != current_day:
+            nutrition_data['message'] = "\n\nLooks like stephen didn't update the spreadsheet. Get out a frying pan and ROAST HIM."
+            return nutrition_data
 
 
         nutrition_data['totals']['calories'] = float(values[1][0])
