@@ -18,10 +18,14 @@ class SpreadsheetNutritionClient():
         nutrition_data = {}
         nutrition_data['totals'] = {}
         spreadsheetId = '1-XYteIgeAccDfDRnl4ZsOV-HUONsrbu_8LdNdB_V2qc'
-        rangeName = 'sheet1!A1:D2'
+        rangeName = 'sheet1!A1:E2'
         result = service.spreadsheets().values().get(
             spreadsheetId=spreadsheetId, range=rangeName).execute()
         values = result.get('values', [])
+
+        date = values[1][4]
+        print(date)
+
 
         nutrition_data['totals']['calories'] = float(values[1][0])
         nutrition_data['totals']['carbohydrates'] = float(values[1][1])
