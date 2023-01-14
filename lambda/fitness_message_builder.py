@@ -1,7 +1,7 @@
 class FitnessMessageBuilder():
 	def serialize_header(self, today):
 		serialized_day = str(today.month) + "/" + str(today.day) + "/" + str(today.year)
-		return "Hi there, it's fitbot! Here's Stephen's fitness summary for" + serialized_day
+		return "Hi there, it's fitbot! Here's Stephen's fitness summary for " + serialized_day
 
 	def convert_water(self, water):
 		water = water * 0.033814
