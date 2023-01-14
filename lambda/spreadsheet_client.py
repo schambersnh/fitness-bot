@@ -25,7 +25,7 @@ class SpreadsheetNutritionClient():
         values = result.get('values', [])
 
         spreadsheet_day = str(values[1][4])
-        current_day = str()date.today().day)
+        current_day = str(date.today().day)
 
         if spreadsheet_day != current_day:
             nutrition_data['message'] = "\n\nLooks like stephen didn't update the spreadsheet. Get out a frying pan and ROAST HIM."
