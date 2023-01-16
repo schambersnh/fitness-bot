@@ -9,7 +9,7 @@ class TwilioClient():
 
 	def send_message(self, message):
 				trainer_number="+12039482726"
-				numbers_to_message=["+16035081158", trainer_number]
+				numbers_to_message=["+16035081158"]
 				for number in numbers_to_message:
 					 self.twilio.messages.create(
 								 body=message,

@@ -21,7 +21,7 @@ class SpreadsheetNutritionClient():
 
 		nutrition_data['totals'] = {}
 		spreadsheetId = '1-XYteIgeAccDfDRnl4ZsOV-HUONsrbu_8LdNdB_V2qc'
-		rangeName = 'sheet1!A1:E2'
+		rangeName = 'sheet1!A1:G2'
 		result = service.spreadsheets().values().get(
 			spreadsheetId=spreadsheetId, range=rangeName).execute()
 		values = result.get('values', [])
@@ -38,6 +38,9 @@ class SpreadsheetNutritionClient():
 		nutrition_data['totals']['carbohydrates'] = float(values[1][1])
 		nutrition_data['totals']['fat'] = float(values[1][2])
 		nutrition_data['totals']['protein'] = float(values[1][3])
+
+		nutrition_data['weight'] = str(values[1][5])
+		nutrition_data['water'] = str(values[1][6])
 
 		print('retrieved nutrition_data from spreadsheet')
 		print(nutrition_data)
