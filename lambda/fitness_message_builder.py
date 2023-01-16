@@ -23,7 +23,7 @@ class FitnessMessageBuilder():
 		fat = nutrition_data['totals']['fat']
 		protein = nutrition_data['totals']['protein']
 
-		nutritional_message += "\n\nNutritional Totals: " + self.slash_nutrition(calories, carbs, fat, protein)
+		nutritional_message += "\nNutritional Totals: " + self.slash_nutrition(calories, carbs, fat, protein)
 
 		if nutrition_data['retrieval'] != 'mfp':
 			nutritional_message += "\n\nWeight: " + nutrition_data['weight'] + ' lbs'
