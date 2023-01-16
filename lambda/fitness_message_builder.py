@@ -2,7 +2,7 @@ class FitnessMessageBuilder():
 	def serialize_header(self, today):
 		serialized_day = str(today.month) + "/" + str(today.day) + "/" + str(today.year)
 		header_message = "Hi there, it's fitbot! Here's Stephen's fitness summary for " + serialized_day
-		header_message += "\n\n Goal Nutrition: " + "1940/194/65/146"
+		header_message += "\n\nGoal Nutrition: " + "1940/194/65/146"
 		return header_message
 
 	def convert_water(self, water):
@@ -23,11 +23,11 @@ class FitnessMessageBuilder():
 		fat = nutrition_data['totals']['fat']
 		protein = nutrition_data['totals']['protein']
 
+		nutritional_message += "\n\nNutritional Totals: " + self.slash_nutrition(calories, carbs, fat, protein)
+
 		if nutrition_data['retrieval'] != 'mfp':
 			nutritional_message += "\n\nWeight: " + nutrition_data['weight'] + ' lbs'
-			nutritional_message += "\n\nWater: " + nutrition_data['water'] + ' oz'
-
-		nutritional_message += "\n\nNutritional Totals: " + self.slash_nutrition(calories, carbs, fat, protein)
+			nutritional_message += "\nWater: " + nutrition_data['water'] + ' oz'
 
 		if nutrition_data['retrieval'] == 'mfp':
 			nutritional_message += "\n\nWater: " + self.convert_water(nutrition_data['water'])
